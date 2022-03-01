@@ -1,61 +1,23 @@
 package blb.generics;
 
 /*
- * Extending this and use options and use sorting
+ * Extend the maxmethod to also printing the max to std out using Generic Method
  */
-import java.util.Arrays;
+public class TestMax<T extends Comparable<T>> {
+	T x, y, z;
 
-public class TestMax {
-	public static void main(String[] args) {
-		Integer xInt = 5, yInt = 3, zInt = 2;
-		Float xFlt = 3.4f, yFlt = 2.5f, zFlt = 8.3f;
-		String xSt = "Apple", ySt = "Peach", zSt = "Banana";
-
-		Integer[] arrI = { xInt, yInt, zInt };
-		Float[] arrF = { xFlt, yFlt, zFlt };
-		String[] arrS = { xSt, ySt, zSt };
-
-		System.out.println("Before sorting Elements");
-		printArray(arrI);
-		printArray(arrF);
-		printArray(arrS);
-
-		/*
-		 * sorting array
-		 */
-		Arrays.sort(arrI);
-		Arrays.sort(arrF);
-		Arrays.sort(arrS);
-
-		printArraySort(arrI);
-		printArraySort(arrF);
-		printArraySort(arrS);
-
-		System.out.println();
-		testMaximum(xSt, ySt, zSt);
-		testMaximum(xInt, yInt, zInt);
-		testMaximum(xFlt, yFlt, zFlt);
-
+	public TestMax(T x, T y, T z) {
+		this.x = x;
+		this.y = y;
+		this.z = z;
 	}
 
-	private static <T> void printArraySort(T[] arr) {
-		System.out.println("Sorted array[] is : " + Arrays.toString(arr));
-
+	public T maximum() {
+		return testMaximum(x, y, z);
 	}
 
 	/*
-	 * Before sorting
-	 */
-	public static <T> void printArray(T[] arr) {
-		Integer i;
-		for (i = 0; i < arr.length; i++) {
-			System.out.print(arr[i] + " ");
-		}
-		System.out.println();
-	}
-
-	/*
-	 * Testing the maximum value
+	 * Generic method of Type Integer,Float,String for finding maximum of 3
 	 */
 	private static <T extends Comparable<T>> T testMaximum(T x, T y, T z) {
 		T max;
@@ -73,12 +35,33 @@ public class TestMax {
 
 		return max;
 	}
-
 	/*
-	 * Printing the maximum value
+	 * Create Generic method of name printMax
 	 */
+
 	public static <T> void printMax(T x, T y, T z, T max) {
-		System.out.printf("max of %s,%s and %s is %s\n", x, y, z, max);
+		System.out.printf("max of %s,%s and %s is :- %s\n", x, y, z, max);
+	}
+
+	public static void main(String[] args) {
+		Integer xInt = 5, yInt = 3, zInt = 2;
+		Float xFlt = 3.4f, yFlt = 2.5f, zFlt = 8.3f;
+		String xSt = "Apple", ySt = "Peach", zSt = "Banana";
+
+		/*
+		 * creating the objects of generic
+		 */
+		TestMax<Integer> integer = new TestMax<>(xInt, yInt, zInt);
+		TestMax<Float> flt = new TestMax<>(xFlt, yFlt, zFlt);
+		TestMax<String> string = new TestMax<>(xSt, ySt, zSt);
+
+		/*
+		 * calling methods for finding Maximum
+		 */
+		integer.maximum();
+		flt.maximum();
+		string.maximum();
+
 	}
 
 }
