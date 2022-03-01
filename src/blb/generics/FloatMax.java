@@ -1,15 +1,16 @@
 package blb.generics;
 
 /*
- * Given 3 Integers finding the maximum number
+ * Given 3 Floats finding the maximum
  */
-public class IntegerMax {
+public class FloatMax {
 
 	public static void main(String[] args) {
 		System.out.println("Welcome to the Test Maximum program");
-		Integer num1 = 5;
-		Integer num2 = 2;
-		Integer num3 = 8;
+		
+		Float num1 = 5.3f;
+		Float num2 = 2.2f;
+		Float num3 = 8.4f;
 		
 		if (num1.compareTo(num2) == 1 && num1.compareTo(num3) == 1) {
 			System.out.println("First number is maximum and number is : " + num1);
